@@ -511,7 +511,8 @@ class TemplateExporter(Exporter):
                     with conf_path.open() as f:
                         conf = recursive_update(conf, json.load(f))
             except:
-                OK=1
+                warnings.warn( "_get_config failed on path '" + str(path) + 
+                    "' - please make sure you have write access if you encounter unexpected behavior")
         return conf
 
     @default('template_paths')
